@@ -18,8 +18,8 @@ class WinChecker extends Stage {
 			$this->checkCharInStates($char, 0, 3, 6) ||
 			$this->checkCharInStates($char, 1, 4, 7) ||
 			$this->checkCharInStates($char, 2, 5, 8) ||
-			$this->checkCharInStates($char, 0, 5, 8) ||
-			$this->checkCharInStates($char, 2, 5, 6);
+			$this->checkCharInStates($char, 0, 4, 8) ||
+			$this->checkCharInStates($char, 2, 4, 6);
 	}
 	
 	private function checkCharInStates($char, $state1, $state2, $state3){
