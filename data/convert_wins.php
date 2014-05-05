@@ -15,9 +15,9 @@
 		if(!trim($line)) continue;
 		$line = str_replace('b', NONE, $line);
 		$winChecker = new WinChecker($line);
+		$lineItems = explode(',', $line);
+		array_pop($lineItems);
 		if($winChecker->xWins()){
-			$lineItems = explode(',', $line);
-			array_pop($lineItems);
 			for($i = 0; $i < 9; $i++){
 				if($lineItems[$i] != X) continue;
 				$lineItems[$i] = NONE;
@@ -26,6 +26,17 @@
 					$results[] = implode(',', $lineItems) . ',' . $i;
 				}
 				$lineItems[$i] = X;
+			}
+		}
+		else{
+			for($i = 0; $i < 9; $i++){
+				if($lineItems[$i] != O) continue;
+				$lineItems[$i] = X;
+				$wc = new WinChecker($lineItems);
+				if(!$wc->oWins()){
+					$results[] = implode(',', $lineItems) . ',' . $i;
+				}
+				$lineItems[$i] = O;
 			}
 		}
 	}
