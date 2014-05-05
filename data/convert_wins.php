@@ -31,7 +31,7 @@
 		else{
 			for($i = 0; $i < 9; $i++){
 				if($lineItems[$i] != O) continue;
-				$lineItems[$i] = X;
+				$lineItems[$i] = NONE;
 				$wc = new WinChecker($lineItems);
 				if(!$wc->oWins()){
 					$results[] = implode(',', $lineItems) . ',' . $i;
