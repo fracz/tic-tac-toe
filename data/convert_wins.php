@@ -29,5 +29,5 @@
 			}
 		}
 	}
-	
+	shuffle($results);
 	file_put_contents('data.txt', implode(PHP_EOL, $results));
