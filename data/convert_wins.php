@@ -1,6 +1,5 @@
 <?php
 	namespace TicTacToe;
-	require 'src/Visualizer.php';
 	require 'src/WinChecker.php';
 
 	const INPUT = 'wins.txt';
