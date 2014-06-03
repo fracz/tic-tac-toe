@@ -29,11 +29,11 @@
         if($winChecker->xWins() || $winChecker->oWins()) continue;
         $stage = explode(',', trim($line));
         $bestMove = 0;
-        $bestSupport = 0;
+        $bestSupport = -1;
         for($i = 0; $i < 9; $i++){
             if($stage[$i] != NONE) continue;
             $stage[$i] = X;
-            $support = -1;
+            $support = 0;
             foreach($xWins as $xWin){
                 $match = true;
                 for($j = 0; $j < 9; $j++){
@@ -50,6 +50,6 @@
             }
             $stage[$i] = NONE;
         }
-        if($support >= 0)
+        if($bestSupport >= 0)
             echo implode(',', $stage) . ',' . $bestMove . PHP_EOL;
     }
