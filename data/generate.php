@@ -50,6 +50,10 @@
             }
             $stage[$i] = NONE;
         }
-        if($bestSupport >= 0)
+		$counts = array_count_values($stage);
+		if(!isset($counts[O]))$counts[O] = 0;
+		if(!isset($counts[X]))$counts[X] = 0;
+		$kalaFix = abs($counts[O] - $counts[X]) <= 1;
+        if($bestSupport >= 0 && $kalaFix)
             echo implode(',', $stage) . ',' . $bestMove . PHP_EOL;
     }
