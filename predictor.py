@@ -81,7 +81,29 @@ def searchForWinner(board):
     if crossScore == 8.0 or acrossScore == 8.0:
         return 2.0
     return 0.0
+
+def toCsvFormat(board):
+    csvBoard = ""
+    for el in board:
+        if el == 0.:
+            csvBoard += "_,"
+        elif el == 1.:
+            csvBoard += "x,"
+        else:
+            csvBoard += "o,"
+    return csvBoard[:-1]
+
+with open('data/data.txt', 'r') as myFile:
+    directData = myFile.readlines()
+
+def directLookup(board):
+    csvBoard = toCsvFormat(board)
     
+    for line in directData:
+        if line.startswith(csvBoard):
+            return "Lookup is - " + line[-2]
+    return "No lookup for " + csvBoard
+
 while True:
     el = sys.stdin.readline()
     if (len(board) <= int(el) or board[int(el)] != 0.0):
@@ -98,6 +120,7 @@ while True:
         break
 
     time.sleep(1)
+    print directLookup(board)
     index = int(dtc.predict(board))
     if (len(board) <= index or board[index] != 0.0):
         print "I've figured out an impossible move, sorry!"
